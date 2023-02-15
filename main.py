@@ -24,10 +24,30 @@ if __name__ == '__main__':
     cv.imshow("Green", G)
     cv.imshow("Red", R)
     # write the images to disk
-    cv.imwrite("./channel_red.jpg", R)
-    cv.imwrite("./channel_green.jpg", G)
-    cv.imwrite("./channel_blue.jpg", B)
+    cv.imwrite("./channel_red.png", R)
+    cv.imwrite("./channel_green.png", G)
+    cv.imwrite("./channel_blue.png", B)
+
+
+    """
+    blend the images back
+    """
+    imageR = cv.imread("./channel_red.png", 0)
+    imageG = cv.imread("./channel_green.png", 0)
+    imageB = cv.imread("./channel_blue.png", 0)
+
+    img = cv.merge((imageB, imageG, imageR))
+
+    cv.imwrite('blended.png', img)
+
+    # cv.imwrite("./channel_red_green_blue.jpg", dst)
+    cv.namedWindow("RGB_blend", cv.WINDOW_NORMAL)
+    cv.imshow('RGB_blend', img)
+
     if cv.waitKey(0):
         cv.destroyAllWindows()
+
+
+
 
 
