@@ -1,5 +1,5 @@
 """
-Split RGB channel sample
+Split RGB channel / Blend RGB channels
 
 Refer to Maximinusjoshus on https://medium.com/featurepreneur/understanding-the-concept-of-channels-in-an-image-6d59d4dafaa9
 """
@@ -32,12 +32,7 @@ if __name__ == '__main__':
     """
     blend the images back
     """
-    imageR = cv.imread("./channel_red.png", 0)
-    imageG = cv.imread("./channel_green.png", 0)
-    imageB = cv.imread("./channel_blue.png", 0)
-
-    img = cv.merge((imageB, imageG, imageR))
-
+    img = cv.merge((B, G, R))
     cv.imwrite('blended.png', img)
 
     # cv.imwrite("./channel_red_green_blue.jpg", dst)
